@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+langchain
+python-dotenv   
+langchain_community
+pypdf
+bs4
+langchain-text-splitters
+lxml
+langchain-community
+pandas
+numpy
+streamlit
+faiss-cpu
+langchain-ollama
