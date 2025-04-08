@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import os
 import streamlit as st
-from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain.prompts import ChatPromptTemplate  
 from langchain_community.document_loaders import PyPDFDirectoryLoader  
@@ -15,7 +14,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 
 # Loading env variables
 load_dotenv()
-os.environ["GROQ_API_KEY"]  = os.getenv("GROQ_API_KEY")
+st.secrets["GROQ_API_KEY"]  = os.getenv("GROQ_API_KEY")
 
 # Initializing Groq llm with qwen-2.5-32b  model
 llm = ChatGroq(model="qwen-2.5-32b",verbose=True,)
