@@ -13,7 +13,7 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 
 # Loading env variables
-st.secrets["GROQ_API_KEY"]  = os.getenv("GROQ_API_KEY")
+os.environ["GROQ_API_KEY"]  = st.secrets["GROQ_API_KEY"]
 
 # Initializing Groq llm with qwen-2.5-32b  model
 llm = ChatGroq(model="qwen-2.5-32b",verbose=True,)
