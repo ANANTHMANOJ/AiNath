@@ -14,3 +14,4 @@ streamlit
 faiss-cpu
 langchain-ollama
 langchain_groq
+langchain_huggingface
