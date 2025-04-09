@@ -13,8 +13,8 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 
 
-os.environ["GROQ_API_KEY"]  = st.secrets("GROQ_API_KEY")
-os.environ["HF_TOKEN"] = st.secrets("HF_TOKEN")
+os.environ["GROQ_API_KEY"]  = st.secrets["GROQ_API_KEY"]
+os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
 
 # Initialize Groq LLM
 llm = ChatGroq(model="qwen-2.5-32b", verbose=True)
