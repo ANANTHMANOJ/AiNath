@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 import os
+import torch
 import streamlit as st
 from langchain_groq import ChatGroq
 from langchain.prompts import ChatPromptTemplate  
@@ -12,7 +13,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 
-
+torch.classes.__path__ = []
 os.environ["GROQ_API_KEY"]  = st.secrets["GROQ_API_KEY"]
 os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
 
