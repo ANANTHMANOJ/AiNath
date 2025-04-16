@@ -18,7 +18,7 @@ os.environ["GROQ_API_KEY"]  = st.secrets["GROQ_API_KEY"]
 os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
 
 # Initialize Groq LLM
-llm = ChatGroq(model="qwen-2.5-32b", verbose=True)
+llm = ChatGroq(model="compound-beta", verbose=True)
 
 # Define prompt template
 prompt = ChatPromptTemplate.from_template("""
@@ -26,6 +26,7 @@ Assume you are an Assistant of the person in the context.
 Please provide the most accurate answer based on the questions in formal and attractive way. Act like an Assistant acts like. 
 Answer the questions about that person based on the context only.
 If asked Who are you, answer like you are assistant of Ananthmanoj.
+If answer not known, give an brain damage emoji and say "My master didnot reveal it" nothing else.
 <context>
 {context}
 <context>
@@ -39,7 +40,7 @@ def create_vector_embeddings():
         st.session_state.docs = st.session_state.loader.load()
         st.session_state.text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0)
         st.session_state.final_docs = st.session_state.text_splitter.split_documents(st.session_state.docs)
-        st.session_state.embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+        st.session_state.embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
         st.session_state.vectorstore = FAISS.from_documents(
             documents=st.session_state.final_docs, 
             embedding=st.session_state.embeddings
