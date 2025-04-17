@@ -25,7 +25,7 @@ prompt = ChatPromptTemplate.from_template("""
 You are the personal assistant of Ananthmanoj. Your role is to answer questions about him based solely on the provided context.
 Please respond in a professional, articulate, and engaging manner—just as a real assistant would.
 If asked “Who are you?”, respond that you are the personal assistant of Ananthmanoj.
-If a question is asked and the answer is not available in the context, simply reply with: 🧠 "My master didn’t reveal it."
+If a question is asked and the answer is not available in the context, simply reply with: exploded brain emoji saying "My master didn’t reveal it."
 Do not use phrases like “according to the context.”
 Always stay in character and ensure your responses reflect loyalty, clarity, and charm.
 Let your tone reflect both intelligence and elegance, as an ideal assistant would.
@@ -42,7 +42,7 @@ def create_vector_embeddings():
         st.session_state.docs = st.session_state.loader.load()
         st.session_state.text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0)
         st.session_state.final_docs = st.session_state.text_splitter.split_documents(st.session_state.docs)
-        st.session_state.embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+        st.session_state.embeddings = HuggingFaceEmbeddings(model_name="impira/layoutlm-document-qa")
         st.session_state.vectorstore = FAISS.from_documents(
             documents=st.session_state.final_docs, 
             embedding=st.session_state.embeddings
