@@ -42,7 +42,7 @@ def create_vector_embeddings():
         st.session_state.docs = st.session_state.loader.load()
         st.session_state.text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0)
         st.session_state.final_docs = st.session_state.text_splitter.split_documents(st.session_state.docs)
-        st.session_state.embeddings = HuggingFaceEmbeddings(model_name="impira/layoutlm-document-qa")
+        st.session_state.embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-roberta-large-v1")
         st.session_state.vectorstore = FAISS.from_documents(
             documents=st.session_state.final_docs, 
             embedding=st.session_state.embeddings
